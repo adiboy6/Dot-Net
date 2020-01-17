@@ -6,13 +6,13 @@ Module Calculator
         Dim number1 As Integer = Integer.Parse(Console.ReadLine())
         Dim number2 As Integer = Integer.Parse(Console.ReadLine())
         
-        Console.WriteLine(vbCrLf + "1.Addition" + vbCrLf + "2.Subtraction" + vbCrLf + "3.Multiplication" + vbCrLf + "4.Division")
+        Console.WriteLine(vbCrLf + "1.Addition" + vbCrLf + "2.Subtraction" + vbCrLf + "3.Multiplication" + vbCrLf + "4.Division (in decimals)")
         
         Console.WriteLine("Choose any one:")
         
-        Dim number As Integer = Integer.Parse(Console.ReadLine())
+        Dim option As Integer = Integer.Parse(Console.ReadLine())
         
-        Select Case number
+        Select Case option
             
             Case 1
                 Console.WriteLine("Addition of two numbers:")
