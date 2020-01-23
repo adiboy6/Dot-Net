@@ -7,7 +7,7 @@
     /// <summary>
     /// The main <c>Calculator</c> class.
     /// Contains all methods for performing basic math functions.
-    /// <list type="bullet">
+    /// <list type="number">
     /// <item>
     /// <term>Add</term>
     /// <description>Addition Operation</description>
@@ -28,6 +28,7 @@
     /// </summary>
     /// <remarks>
     /// <para> This class can add, subtract, multiply and divide. </para>
+    /// <para> Here most of the classes use integer type and divide method has even double as its type.</para>
     /// </remarks>
     public class Calculator
     {

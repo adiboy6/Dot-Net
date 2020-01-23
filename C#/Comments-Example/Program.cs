@@ -20,24 +20,17 @@ namespace ConsoleApp
 
             Console.WriteLine("Enter two numbers:");
 
-            ///<value>
-            ///the <c>number</c> varialbe is used to store the first operand of user input
-            /// </value>
+            /// <value>the <c>number</c> varialbe is used to store the first operand of user input</value>
             number1 = Convert.ToInt32(Console.ReadLine());
 
-            ///<value>
-            ///the <c>number</c> varialbe is used to store the second operand of user input
-            /// </value>
+            ///<value>the <c>number</c> varialbe is used to store the second operand of user input</value>
             number2 = Convert.ToInt32(Console.ReadLine());
 
             Console.WriteLine("\n1.Addition\n2.Subtraction\n3.Multiplication\n4.Division\n5.Division(in decimals)\n");
 
             Console.WriteLine("\nChoose any one:");
             
-            ///<value>
-            ///the <c>option</c> varialbe is used to store the value of selected options from user
-            /// </value>
-
+            ///<value>the <c>option</c> varialbe is used to store the value of selected options from user</value>
             int option = Convert.ToInt32(Console.ReadLine());
 
             switch (option)
