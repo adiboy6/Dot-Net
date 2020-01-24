@@ -6,19 +6,21 @@ namespace Calculator
     {
         public static void Main()
         {
-            int addition_ans = CalculatorMethods.add(Int32.MinValue, Int32.MinValue);
+            CalculatorMethods calculatorMethods = new CalculatorMethods();
+
+            int addition_ans = calculatorMethods.add(Int32.MinValue, Int32.MinValue);
 
             //Sample Run
             Console.WriteLine(addition_ans);
 
 
-            int subtraction_ans = CalculatorMethods.subtract(Int32.MaxValue, Int32.MaxValue);
+            //int subtraction_ans = CalculatorMethods.subtract(Int32.MaxValue, Int32.MaxValue);
             
             //Sample Run
-            Console.WriteLine(subtraction_ans);
+            //Console.WriteLine(subtraction_ans);
 
 
-            double division_ans = CalculatorMethods.divide(1, 2);
+            double division_ans = calculatorMethods.divide(22, 7);
             
             //Sample Run
             Console.WriteLine(division_ans);

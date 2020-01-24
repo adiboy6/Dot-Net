@@ -6,21 +6,25 @@ namespace Calculator
 {
     public class CalculatorMethods
     {
-        public static int add(int a,int b)
+        public int add(int a, int b)
         {
             return a + b;
         }
 
-        public static int subtract(int a, int b)
+        public int subtract(int a, int b)
         {
             return a - b;
         }
-        public static int multiply(int a, int b)
+        public int multiply(int a, int b)
         {
             return a * b;
         }
-        public static double divide(double a, double b)
+        public double divide(double a, double b)
         {
+            if (b == 0.0f)
+            {
+                throw new DivideByZeroException();
+            }
             return a / b;
         }
     }

@@ -8,3 +8,4 @@ C:\Users\Aditya_Sabbella\source\repos\Calculator\Calculator\obj\Debug\netcoreapp
 C:\Users\Aditya_Sabbella\source\repos\Calculator\Calculator\obj\Debug\netcoreapp3.1\Calculator.AssemblyInfo.cs
 C:\Users\Aditya_Sabbella\source\repos\Calculator\Calculator\obj\Debug\netcoreapp3.1\Calculator.dll
 C:\Users\Aditya_Sabbella\source\repos\Calculator\Calculator\obj\Debug\netcoreapp3.1\Calculator.pdb
+C:\Users\Aditya_Sabbella\source\repos\Calculator\Calculator\obj\Debug\netcoreapp3.1\Calculator.csprojAssemblyReference.cache
