@@ -6,7 +6,7 @@ namespace Calculator
     {
         public static void Main()
         {
-            CalculatorMethods calculatorMethods = new CalculatorMethods();
+            ICalculatorMethods calculatorMethods = new CalculatorMethods();
 
             int addition_ans = calculatorMethods.add(Int32.MinValue, Int32.MinValue);
 
@@ -14,7 +14,7 @@ namespace Calculator
             Console.WriteLine(addition_ans);
 
 
-            //int subtraction_ans = CalculatorMethods.subtract(Int32.MaxValue, Int32.MaxValue);
+            int subtraction_ans = calculatorMethods.subtract(Int32.MaxValue, Int32.MaxValue);
             
             //Sample Run
             //Console.WriteLine(subtraction_ans);
@@ -24,6 +24,8 @@ namespace Calculator
             
             //Sample Run
             Console.WriteLine(division_ans);
+
+            Console.ReadKey();
         }
     }
 }

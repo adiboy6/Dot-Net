@@ -4,7 +4,7 @@ using System;
 namespace CalculatorTest
 {
     [TestClass]
-    public class CalculatorMethodsTest
+    public sealed class CalculatorMethodsTest
     {
 
         Calculator.CalculatorMethods calculatorMethods = new Calculator.CalculatorMethods();
