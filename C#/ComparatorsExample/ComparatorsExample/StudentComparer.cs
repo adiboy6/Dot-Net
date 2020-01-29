@@ -18,7 +18,7 @@ namespace ComparatorsExample
         /// </summary>
         /// <param name="x">A Student object</param>
         /// <param name="y">A Student object</param>
-        /// <returns>The difference between Name or Roll No.</returns>
+        /// <returns>The difference of Name or Roll No.</returns>
         public int Compare(Student x, Student y)
         {
             //Check first if both the Names are equal or not

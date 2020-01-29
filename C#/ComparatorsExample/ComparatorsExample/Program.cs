@@ -2,10 +2,14 @@
 
 namespace ComparatorsExample
 {
+    /// <summary>
+    /// Main class.
+    /// </summary>
     class Program
     {
         static void Main(string[] args)
         {
+            //A Student array is created
             Student[] student = new Student[]
             {
                 new Student()
@@ -30,7 +34,7 @@ namespace ComparatorsExample
                 }
             };
 
-            //Console.WriteLine("Before sorting:");
+            Console.WriteLine("Before sorting:");
             Program.PrintArray(student);
 
             Console.WriteLine("\nAfter sorting:");
@@ -45,7 +49,6 @@ namespace ComparatorsExample
             Program.PrintArray(student);
 
             //For Equatable
-
             var student_test = new Student()
             {
                 Name = "Alice",
@@ -65,6 +68,10 @@ namespace ComparatorsExample
             Console.ReadKey();
         }
 
+        /// <summary>
+        /// Used to print the array on Console
+        /// </summary>
+        /// <param name="student">A student array</param>
         public static void PrintArray(Student[] student)
         {
             for (int i = 0; i < student.Length; i++)
