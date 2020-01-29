@@ -14,7 +14,7 @@ namespace ComparatorsExample
     public class StudentComparer : IComparer<Student>
     {   
         /// <summary>
-        /// <para>Here, the soring is first done based on Name and if Name is same, then it's done based on Roll No</para>
+        /// <para>The soring is first done based on Name and if Name is same, then it's done based on Roll No</para>
         /// </summary>
         /// <param name="x">A Student object</param>
         /// <param name="y">A Student object</param>
