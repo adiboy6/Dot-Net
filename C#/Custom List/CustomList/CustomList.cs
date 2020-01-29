@@ -1,12 +1,14 @@
 ﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Text;
 
 namespace List
 {
-    class CustomList
+    class CustomList : ICollection
     {
-        public int Size { get; }
+        private int _index;
+        private int _capacity;
 
         private object[] array;
 
@@ -25,7 +27,9 @@ namespace List
         //     c is null.
         public CustomList()
         {
-            array = new object[0];
+            _capacity = 4;
+            array = new object[_capacity];
+            _index = -1;
         }
 
         //
@@ -55,7 +59,7 @@ namespace List
         // Returns:
         //     true if the System.Collections.ArrayList has a fixed size; otherwise, false.
         //     The default is false.
-        public virtual bool IsFixedSize { get; }
+        public bool IsFixedSize { get; }
 
         //
         // Summary:
@@ -63,7 +67,14 @@ namespace List
         //
         // Returns:
         //     The number of elements actually contained in the System.Collections.ArrayList.
-        public virtual int Count { get; }
+        public int Count
+        {
+            get
+            {
+                return _index + 1;
+            }
+        }
+
         //
         // Summary:
         //     Gets or sets the number of elements that the System.Collections.ArrayList can
@@ -78,15 +89,148 @@ namespace List
         //
         //   T:System.OutOfMemoryException:
         //     There is not enough memory available on the system.
-        public virtual int Capacity { get; set; }
+        public int Capacity
+        {
+            get
+            {
+                return _capacity;
+            }
+            set
+            {
+                _capacity = value;
+            }
+        }
+        
+        public virtual object this[int index]
+        {
+            get
+            {
+                return array[index];
+            }
+            set
+            {
+                array[index] = value;
+            }
+        }
+
+        //
+        // Summary:
+        //     Adds an object to the end of the System.Collections.ArrayList.
+        //
+        // Parameters:
+        //   value:
+        //     The System.Object to be added to the end of the System.Collections.ArrayList.
+        //     The value can be null.
+        //
+        // Returns:
+        //     The System.Collections.ArrayList index at which the value has been added.
+        //
+        // Exceptions:
+        //   T:System.NotSupportedException:
+        //     The System.Collections.ArrayList is read-only. -or- The System.Collections.ArrayList
+        //     has a fixed size.
+        public int Add(object value)
+        {
+            if (IsFixedSize == true || IsReadOnly == true)
+                throw new NotSupportedException();
+
+            if (_index == (Capacity - 1))
+            { 
+                Capacity *= 2;
+
+                object[] temp = new object[Capacity];
+                CopyTo(temp, 0);
+                array = temp;
+            }
+            array[++_index] = value;
+            return _index;
+        }
+
+        //
+        // Summary:
+        //     Adds the elements of an System.Collections.ICollection to the end of the System.Collections.ArrayList.
+        //
+        // Parameters:
+        //   c:
+        //     The System.Collections.ICollection whose elements should be added to the end
+        //     of the System.Collections.ArrayList. The collection itself cannot be null, but
+        //     it can contain elements that are null.
+        //
+        // Exceptions:
+        //   T:System.ArgumentNullException:
+        //     c is null.
+        //
+        //   T:System.NotSupportedException:
+        //     The System.Collections.ArrayList is read-only. -or- The System.Collections.ArrayList
+        //     has a fixed size.
+        public void AddRange(ICollection c)
+        {
+            if (c == null)
+                throw new ArgumentNullException();
+
+            if (IsFixedSize == true || IsReadOnly == true)
+                throw new NotSupportedException();
+
+            foreach (var x in c)
+                array[_index] = x;
+        }
+
+        //
+        // Summary:
+        //     Copies the entire System.Collections.ArrayList to a compatible one-dimensional
+        //     System.Array, starting at the specified index of the target array.
+        //
+        // Parameters:
+        //   array:
+        //     The one-dimensional System.Array that is the destination of the elements copied
+        //     from System.Collections.ArrayList. The System.Array must have zero-based indexing.
+        //
+        //   arrayIndex:
+        //     The zero-based index in array at which copying begins.
+        //
+        // Exceptions:
+        //   T:System.ArgumentNullException:
+        //     array is null.
+        //
+        //   T:System.ArgumentOutOfRangeException:
+        //     arrayIndex is less than zero.
+        //
+        //   T:System.ArgumentException:
+        //     array is multidimensional. -or- The number of elements in the source System.Collections.ArrayList
+        //     is greater than the available space from arrayIndex to the end of the destination
+        //     array.
+        //
+        //   T:System.InvalidCastException:
+        //     The type of the source System.Collections.ArrayList cannot be cast automatically
+        //     to the type of the destination array.
+        public void CopyTo(Array target_array, int target_index)
+        {
+            if (target_array == null)
+                throw new ArgumentNullException();
+
+            if ((target_array.Length - target_index) < Count)
+                throw new ArgumentException();
+            
+            for(int index = 0; index < Count; index++)
+            {
+                target_array.SetValue(array[index], target_index);
+                target_index++;
+            }
+        }
+
+        public IEnumerator GetEnumerator()
+        {
+            throw new NotImplementedException();
+        }
+
         //
         // Summary:
         //     Gets an object that can be used to synchronize access to the System.Collections.ArrayList.
         //
         // Returns:
         //     An object that can be used to synchronize access to the System.Collections.ArrayList.
-        public virtual object SyncRoot { get; }
-
+        public object SyncRoot { get; }
+        /*
         //
         // Summary:
         //     Creates an System.Collections.ArrayList wrapper for a specific System.Collections.IList.
@@ -102,6 +246,7 @@ namespace List
         //   T:System.ArgumentNullException:
         //     list is null.
         public static ArrayList Adapter(IList list);
+
         //
         // Summary:
         //     Returns an System.Collections.ArrayList wrapper with a fixed size.
@@ -117,6 +262,7 @@ namespace List
         //   T:System.ArgumentNullException:
         //     list is null.
         public static ArrayList FixedSize(ArrayList list);
+        
         //
         // Summary:
         //     Returns an System.Collections.IList wrapper with a fixed size.
@@ -132,6 +278,7 @@ namespace List
         //   T:System.ArgumentNullException:
         //     list is null.
         public static IList FixedSize(IList list);
+        
         //
         // Summary:
         //     Returns a read-only System.Collections.IList wrapper.
@@ -147,6 +294,7 @@ namespace List
         //   T:System.ArgumentNullException:
         //     list is null.
         public static IList ReadOnly(IList list);
+        
         //
         // Summary:
         //     Returns a read-only System.Collections.ArrayList wrapper.
@@ -162,6 +310,7 @@ namespace List
         //   T:System.ArgumentNullException:
         //     list is null.
         public static ArrayList ReadOnly(ArrayList list);
+        
         //
         // Summary:
         //     Returns an System.Collections.ArrayList whose elements are copies of the specified
@@ -183,6 +332,7 @@ namespace List
         //   T:System.ArgumentOutOfRangeException:
         //     count is less than zero.
         public static ArrayList Repeat([NullableAttribute(2)] object? value, int count);
+        
         //
         // Summary:
         //     Returns an System.Collections.ArrayList wrapper that is synchronized (thread
@@ -199,6 +349,7 @@ namespace List
         //   T:System.ArgumentNullException:
         //     list is null.
         public static ArrayList Synchronized(ArrayList list);
+        
         //
         // Summary:
         //     Returns an System.Collections.IList wrapper that is synchronized (thread safe).
@@ -214,42 +365,9 @@ namespace List
         //   T:System.ArgumentNullException:
         //     list is null.
         public static IList Synchronized(IList list);
-        //
-        // Summary:
-        //     Adds an object to the end of the System.Collections.ArrayList.
-        //
-        // Parameters:
-        //   value:
-        //     The System.Object to be added to the end of the System.Collections.ArrayList.
-        //     The value can be null.
-        //
-        // Returns:
-        //     The System.Collections.ArrayList index at which the value has been added.
-        //
-        // Exceptions:
-        //   T:System.NotSupportedException:
-        //     The System.Collections.ArrayList is read-only. -or- The System.Collections.ArrayList
-        //     has a fixed size.
-        [NullableContextAttribute(2)]
-        public virtual int Add(object? value);
-        //
-        // Summary:
-        //     Adds the elements of an System.Collections.ICollection to the end of the System.Collections.ArrayList.
-        //
-        // Parameters:
-        //   c:
-        //     The System.Collections.ICollection whose elements should be added to the end
-        //     of the System.Collections.ArrayList. The collection itself cannot be null, but
-        //     it can contain elements that are null.
-        //
-        // Exceptions:
-        //   T:System.ArgumentNullException:
-        //     c is null.
-        //
-        //   T:System.NotSupportedException:
-        //     The System.Collections.ArrayList is read-only. -or- The System.Collections.ArrayList
-        //     has a fixed size.
-        public virtual void AddRange(ICollection c);
+        */
+        
+        /*
         //
         // Summary:
         //     Searches the entire sorted System.Collections.ArrayList for an element using
@@ -273,7 +391,8 @@ namespace List
         //   T:System.InvalidOperationException:
         //     value is not of the same type as the elements of the System.Collections.ArrayList.
         [NullableContextAttribute(2)]
-        public virtual int BinarySearch(object? value);
+        public  int BinarySearch(object? value);
+        
         //
         // Summary:
         //     Searches a range of elements in the sorted System.Collections.ArrayList for an
@@ -313,7 +432,8 @@ namespace List
         //   T:System.ArgumentOutOfRangeException:
         //     index is less than zero. -or- count is less than zero.
         [NullableContextAttribute(2)]
-        public virtual int BinarySearch(int index, int count, object? value, IComparer? comparer);
+        public  int BinarySearch(int index, int count, object? value, IComparer? comparer);
+        
         //
         // Summary:
         //     Searches the entire sorted System.Collections.ArrayList for an element using
@@ -342,7 +462,8 @@ namespace List
         //   T:System.InvalidOperationException:
         //     comparer is null and value is not of the same type as the elements of the System.Collections.ArrayList.
         [NullableContextAttribute(2)]
-        public virtual int BinarySearch(object? value, IComparer? comparer);
+        public  int BinarySearch(object? value, IComparer? comparer);
+        
         //
         // Summary:
         //     Removes all elements from the System.Collections.ArrayList.
@@ -351,14 +472,16 @@ namespace List
         //   T:System.NotSupportedException:
         //     The System.Collections.ArrayList is read-only. -or- The System.Collections.ArrayList
         //     has a fixed size.
-        public virtual void Clear();
+        public  void Clear();
+        
         //
         // Summary:
         //     Creates a shallow copy of the System.Collections.ArrayList.
         //
         // Returns:
         //     A shallow copy of the System.Collections.ArrayList.
-        public virtual object Clone();
+        public  object Clone();
+        
         //
         // Summary:
         //     Determines whether an element is in the System.Collections.ArrayList.
@@ -371,7 +494,8 @@ namespace List
         // Returns:
         //     true if item is found in the System.Collections.ArrayList; otherwise, false.
         [NullableContextAttribute(2)]
-        public virtual bool Contains(object? item);
+        public  bool Contains(object? item);
+        
         //
         // Summary:
         //     Copies a range of elements from the System.Collections.ArrayList to a compatible
@@ -409,36 +533,8 @@ namespace List
         //   T:System.InvalidCastException:
         //     The type of the source System.Collections.ArrayList cannot be cast automatically
         //     to the type of the destination array.
-        public virtual void CopyTo(int index, Array array, int arrayIndex, int count);
-        //
-        // Summary:
-        //     Copies the entire System.Collections.ArrayList to a compatible one-dimensional
-        //     System.Array, starting at the specified index of the target array.
-        //
-        // Parameters:
-        //   array:
-        //     The one-dimensional System.Array that is the destination of the elements copied
-        //     from System.Collections.ArrayList. The System.Array must have zero-based indexing.
-        //
-        //   arrayIndex:
-        //     The zero-based index in array at which copying begins.
-        //
-        // Exceptions:
-        //   T:System.ArgumentNullException:
-        //     array is null.
-        //
-        //   T:System.ArgumentOutOfRangeException:
-        //     arrayIndex is less than zero.
-        //
-        //   T:System.ArgumentException:
-        //     array is multidimensional. -or- The number of elements in the source System.Collections.ArrayList
-        //     is greater than the available space from arrayIndex to the end of the destination
-        //     array.
-        //
-        //   T:System.InvalidCastException:
-        //     The type of the source System.Collections.ArrayList cannot be cast automatically
-        //     to the type of the destination array.
-        public virtual void CopyTo(Array array, int arrayIndex);
+        public  void CopyTo(int index, Array array, int arrayIndex, int count);
+        
         //
         // Summary:
         //     Copies the entire System.Collections.ArrayList to a compatible one-dimensional
@@ -460,7 +556,8 @@ namespace List
         //   T:System.InvalidCastException:
         //     The type of the source System.Collections.ArrayList cannot be cast automatically
         //     to the type of the destination array.
-        public virtual void CopyTo(Array array);
+        public  void CopyTo(Array array);
+        
         //
         // Summary:
         //     Returns an enumerator for a range of elements in the System.Collections.ArrayList.
@@ -484,14 +581,16 @@ namespace List
         //
         //   T:System.ArgumentException:
         //     index and count do not specify a valid range in the System.Collections.ArrayList.
-        public virtual IEnumerator GetEnumerator(int index, int count);
+        public  IEnumerator GetEnumerator(int index, int count);
+        
         //
         // Summary:
         //     Returns an enumerator for the entire System.Collections.ArrayList.
         //
         // Returns:
         //     An System.Collections.IEnumerator for the entire System.Collections.ArrayList.
-        public virtual IEnumerator GetEnumerator();
+        public  IEnumerator GetEnumerator();
+        
         //
         // Summary:
         //     Returns an System.Collections.ArrayList which represents a subset of the elements
@@ -514,7 +613,8 @@ namespace List
         //
         //   T:System.ArgumentException:
         //     index and count do not denote a valid range of elements in the System.Collections.ArrayList.
-        public virtual ArrayList GetRange(int index, int count);
+        public  ArrayList GetRange(int index, int count);
+        
         //
         // Summary:
         //     Searches for the specified System.Object and returns the zero-based index of
@@ -543,7 +643,8 @@ namespace List
         //     -or- count is less than zero. -or- startIndex and count do not specify a valid
         //     section in the System.Collections.ArrayList.
         [NullableContextAttribute(2)]
-        public virtual int IndexOf(object? value, int startIndex, int count);
+        public  int IndexOf(object? value, int startIndex, int count);
+        
         //
         // Summary:
         //     Searches for the specified System.Object and returns the zero-based index of
@@ -567,7 +668,8 @@ namespace List
         //   T:System.ArgumentOutOfRangeException:
         //     startIndex is outside the range of valid indexes for the System.Collections.ArrayList.
         [NullableContextAttribute(2)]
-        public virtual int IndexOf(object? value, int startIndex);
+        public  int IndexOf(object? value, int startIndex);
+        
         //
         // Summary:
         //     Searches for the specified System.Object and returns the zero-based index of
@@ -582,7 +684,8 @@ namespace List
         //     The zero-based index of the first occurrence of value within the entire System.Collections.ArrayList,
         //     if found; otherwise, -1.
         [NullableContextAttribute(2)]
-        public virtual int IndexOf(object? value);
+        public  int IndexOf(object? value);
+        
         //
         // Summary:
         //     Inserts an element into the System.Collections.ArrayList at the specified index.
@@ -602,7 +705,8 @@ namespace List
         //     The System.Collections.ArrayList is read-only. -or- The System.Collections.ArrayList
         //     has a fixed size.
         [NullableContextAttribute(2)]
-        public virtual void Insert(int index, object? value);
+        public  void Insert(int index, object? value);
+        
         //
         // Summary:
         //     Inserts the elements of a collection into the System.Collections.ArrayList at
@@ -627,7 +731,8 @@ namespace List
         //   T:System.NotSupportedException:
         //     The System.Collections.ArrayList is read-only. -or- The System.Collections.ArrayList
         //     has a fixed size.
-        public virtual void InsertRange(int index, ICollection c);
+        public  void InsertRange(int index, ICollection c);
+        
         //
         // Summary:
         //     Searches for the specified System.Object and returns the zero-based index of
@@ -642,7 +747,8 @@ namespace List
         //     The zero-based index of the last occurrence of value within the entire the System.Collections.ArrayList,
         //     if found; otherwise, -1.
         [NullableContextAttribute(2)]
-        public virtual int LastIndexOf(object? value);
+        public  int LastIndexOf(object? value);
+        
         //
         // Summary:
         //     Searches for the specified System.Object and returns the zero-based index of
@@ -671,7 +777,8 @@ namespace List
         //     -or- count is less than zero. -or- startIndex and count do not specify a valid
         //     section in the System.Collections.ArrayList.
         [NullableContextAttribute(2)]
-        public virtual int LastIndexOf(object? value, int startIndex, int count);
+        public  int LastIndexOf(object? value, int startIndex, int count);
+        
         //
         // Summary:
         //     Searches for the specified System.Object and returns the zero-based index of
@@ -695,7 +802,8 @@ namespace List
         //   T:System.ArgumentOutOfRangeException:
         //     startIndex is outside the range of valid indexes for the System.Collections.ArrayList.
         [NullableContextAttribute(2)]
-        public virtual int LastIndexOf(object? value, int startIndex);
+        public  int LastIndexOf(object? value, int startIndex);
+        
         //
         // Summary:
         //     Removes the first occurrence of a specific object from the System.Collections.ArrayList.
@@ -710,7 +818,8 @@ namespace List
         //     The System.Collections.ArrayList is read-only. -or- The System.Collections.ArrayList
         //     has a fixed size.
         [NullableContextAttribute(2)]
-        public virtual void Remove(object? obj);
+        public  void Remove(object? obj);
+        
         //
         // Summary:
         //     Removes the element at the specified index of the System.Collections.ArrayList.
@@ -726,7 +835,8 @@ namespace List
         //   T:System.NotSupportedException:
         //     The System.Collections.ArrayList is read-only. -or- The System.Collections.ArrayList
         //     has a fixed size.
-        public virtual void RemoveAt(int index);
+        public  void RemoveAt(int index);
+        
         //
         // Summary:
         //     Removes a range of elements from the System.Collections.ArrayList.
@@ -748,7 +858,8 @@ namespace List
         //   T:System.NotSupportedException:
         //     The System.Collections.ArrayList is read-only. -or- The System.Collections.ArrayList
         //     has a fixed size.
-        public virtual void RemoveRange(int index, int count);
+        public  void RemoveRange(int index, int count);
+        
         //
         // Summary:
         //     Reverses the order of the elements in the specified range.
@@ -769,7 +880,8 @@ namespace List
         //
         //   T:System.NotSupportedException:
         //     The System.Collections.ArrayList is read-only.
-        public virtual void Reverse(int index, int count);
+        public  void Reverse(int index, int count);
+        
         //
         // Summary:
         //     Reverses the order of the elements in the entire System.Collections.ArrayList.
@@ -777,7 +889,8 @@ namespace List
         // Exceptions:
         //   T:System.NotSupportedException:
         //     The System.Collections.ArrayList is read-only.
-        public virtual void Reverse();
+        public  void Reverse();
+        
         //
         // Summary:
         //     Copies the elements of a collection over a range of elements in the System.Collections.ArrayList.
@@ -801,7 +914,8 @@ namespace List
         //
         //   T:System.NotSupportedException:
         //     The System.Collections.ArrayList is read-only.
-        public virtual void SetRange(int index, ICollection c);
+        public  void SetRange(int index, ICollection c);
+        
         //
         // Summary:
         //     Sorts the elements in the entire System.Collections.ArrayList using the specified
@@ -823,7 +937,8 @@ namespace List
         //   T:System.ArgumentException:
         //     null is passed for comparer, and the elements in the list do not implement System.IComparable.
         [NullableContextAttribute(2)]
-        public virtual void Sort(IComparer? comparer);
+        public  void Sort(IComparer? comparer);
+        
         //
         // Summary:
         //     Sorts the elements in a range of elements in System.Collections.ArrayList using
@@ -854,7 +969,8 @@ namespace List
         //   T:System.InvalidOperationException:
         //     An error occurred while comparing two elements.
         [NullableContextAttribute(2)]
-        public virtual void Sort(int index, int count, IComparer? comparer);
+        public  void Sort(int index, int count, IComparer? comparer);
+        
         //
         // Summary:
         //     Sorts the elements in the entire System.Collections.ArrayList.
@@ -862,7 +978,8 @@ namespace List
         // Exceptions:
         //   T:System.NotSupportedException:
         //     The System.Collections.ArrayList is read-only.
-        public virtual void Sort();
+        public  void Sort();
+        
         //
         // Summary:
         //     Copies the elements of the System.Collections.ArrayList to a new System.Object
@@ -871,7 +988,11 @@ namespace List
         // Returns:
         //     An System.Object array containing copies of the elements of the System.Collections.ArrayList.
         [return: NullableAttribute(new[] { 1, 2 })]
-        public virtual object?[] ToArray();
+        public  object?[] ToArray()
+        {
+            return array;
+        }
+        
         //
         // Summary:
         //     Copies the elements of the System.Collections.ArrayList to a new array of the
@@ -893,7 +1014,8 @@ namespace List
         //   T:System.InvalidCastException:
         //     The type of the source System.Collections.ArrayList cannot be cast automatically
         //     to the specified type.
-        public virtual Array ToArray(Type type);
+        public  Array ToArray(Type type);
+        
         //
         // Summary:
         //     Sets the capacity to the actual number of elements in the System.Collections.ArrayList.
@@ -902,6 +1024,7 @@ namespace List
         //   T:System.NotSupportedException:
         //     The System.Collections.ArrayList is read-only. -or- The System.Collections.ArrayList
         //     has a fixed size.
-        public virtual void TrimToSize();
+        public  void TrimToSize();
+        */
     }
 }
