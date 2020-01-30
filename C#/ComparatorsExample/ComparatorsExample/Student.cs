@@ -55,5 +55,29 @@ namespace ComparatorsExample
         {
             return (Name == other.Name) && (Roll_No == other.Roll_No);
         }
+
+        /// <summary>
+        /// <para>This method is used by Comparision delegate. The syntax is:</para>
+        /// <code>public delegate int Comparison<in T>(T x, T y);</code>
+        /// </summary>
+        /// <param name="x">A Student object</param>
+        /// <param name="y">A Student object</param>
+        /// <returns>An integer</returns>
+        public static int CompareByRollNo(Student x, Student y)
+        {
+            return x.Roll_No.CompareTo(y.Roll_No);
+        }
+
+        /// <summary>
+        /// <para>This method is used by Comparision delegate. The syntax is:</para>
+        /// <code>public delegate int Comparison<in T>(T x, T y);</code>
+        /// </summary>
+        /// <param name="x">A Student object</param>
+        /// <param name="y">A Student object</param>
+        /// <returns>An integer</returns>
+        public static int CompareByName(Student x, Student y)
+        {
+            return x.Name.CompareTo(y.Name);
+        }
     }
 }

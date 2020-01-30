@@ -20,7 +20,7 @@ namespace ComparatorsExample
                 new Student()
                 {
                     Name="Alice",
-                    Roll_No=102
+                    Roll_No=105
                 },
                 new Student()
                 {
@@ -40,11 +40,19 @@ namespace ComparatorsExample
             Console.WriteLine("\nAfter sorting:");
 
             //For Comparer
-            //StudentComparer comparer = new StudentComparer();
-            //Array.Sort(student, comparer);
+            StudentComparer comparer = new StudentComparer();
+            Array.Sort(student, comparer);
+
+            Program.PrintArray(student);
 
             //For Comparable
-            Array.Sort(student);
+            //Array.Sort(student);
+
+            Console.WriteLine();
+
+            //For Comparision
+            Console.WriteLine("Sorting by Roll No.");
+            Array.Sort(student,Student.CompareByRollNo);
 
             Program.PrintArray(student);
 
@@ -52,7 +60,7 @@ namespace ComparatorsExample
             var student_test = new Student()
             {
                 Name = "Alice",
-                Roll_No = 102
+                Roll_No = 105
             };
 
             Console.WriteLine("\nFinding Student:\nName : {0}\nRoll No : {1}", student_test.Name, student_test.Roll_No);
