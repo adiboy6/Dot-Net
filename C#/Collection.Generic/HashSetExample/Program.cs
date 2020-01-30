@@ -11,7 +11,7 @@ namespace HashSetExample
 
             Console.WriteLine("Size of array " + array.Length);
             
-            //duplicates are removed and added in the set
+            //duplicates are removed and added in the set. Internally, it uses a hash-table
             HashSet<int> hashSet = new HashSet<int>(array);
 
             Console.WriteLine("Unique elements of array in a set");

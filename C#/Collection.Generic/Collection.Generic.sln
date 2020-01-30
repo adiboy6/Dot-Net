@@ -13,6 +13,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DictionaryExample", "Dictio
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LinkedListExample", "LinkedListExample\LinkedListExample.csproj", "{DA17F07F-EE88-4050-B75A-9D612CC53A30}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SortedSetExample", "SortedSetExample\SortedSetExample.csproj", "{110DD1C0-940F-41A8-B243-520A911C2751}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -39,6 +41,10 @@ Global
 		{DA17F07F-EE88-4050-B75A-9D612CC53A30}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{DA17F07F-EE88-4050-B75A-9D612CC53A30}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{DA17F07F-EE88-4050-B75A-9D612CC53A30}.Release|Any CPU.Build.0 = Release|Any CPU
+		{110DD1C0-940F-41A8-B243-520A911C2751}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{110DD1C0-940F-41A8-B243-520A911C2751}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{110DD1C0-940F-41A8-B243-520A911C2751}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{110DD1C0-940F-41A8-B243-520A911C2751}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
