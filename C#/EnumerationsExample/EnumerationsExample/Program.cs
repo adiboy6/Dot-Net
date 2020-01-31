@@ -24,6 +24,13 @@ namespace EnumerationsExample
             //Non-generic class (Library) is parsed using foreach which internally IEnumerable and IEnumerator.
             foreach (Book b in library)
                 Console.WriteLine("Title : " + b.Title + "\nAuthor : " + b.Author + "\n");
+
+            //Using LibraryEnum (IEnumerator interface) class
+            LibraryEnum library1 = new LibraryEnum(books, Mode.Forward);
+
+            //By using MoveNext, it parses the non-generic collection and value is given by Current
+            while (library1.MoveNext())
+                Console.WriteLine("Title : " + library1.Current.Title + " " + "\nAuthor + " + library1.Current.Author + "\n");
         }
     }
 }
