@@ -15,6 +15,7 @@ namespace ConcurrentBagExample
 
             string[] dir_name = { ".", ".." };
             
+            //A list of Tasks to store an execution
             List<Task> taskList = new List<Task>();
             
             //Tasks for adding the value
@@ -27,6 +28,8 @@ namespace ConcurrentBagExample
                     }
                     ));
             }
+
+            //Waits for all the tasks to complete their Run
             Task.WaitAll(taskList.ToArray());
 
             List<Task> dup_taskList = new List<Task>();
@@ -36,9 +39,12 @@ namespace ConcurrentBagExample
             //pops/takes out each element in a task
             while(!(fileList.IsEmpty))
             {
+                //we add Task for each Taken value from the concuurent bag
                 dup_taskList.Add( Task.Run(() =>
                 {
                     string value;
+                    
+                    //Tries whether a value can be Taken or not from the concurrent bag
                     if(fileList.TryTake(out value))
                     {
                         Console.WriteLine(value);
@@ -49,6 +55,7 @@ namespace ConcurrentBagExample
                 ));
             }
 
+            //Waits for all the tasks to complete their Run
             Task.WaitAll(dup_taskList.ToArray());
 
             Console.WriteLine("Total number of files are {0}", fileCount);
