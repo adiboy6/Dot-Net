@@ -255,12 +255,6 @@ namespace List
             CopyTo(array, 0);
         }
 
-
-        public IEnumerator GetEnumerator()
-        {
-            throw new NotImplementedException();
-        }
-
         //
         // Summary:
         //     Searches for the specified System.Object and returns the zero-based index of

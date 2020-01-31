@@ -1,11 +1,13 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio 15
-VisualStudioVersion = 15.0.27004.2009
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.29709.97
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Collection.Concurrent", "Collection.Concurrent\Collection.Concurrent.csproj", "{465312F8-BE24-42E1-9724-9829C3D555C3}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ConcurrentBagExample", "ConcurrentBagExample\ConcurrentBagExample.csproj", "{6A3C1D83-7ABF-4990-B9BD-1CB268EA296C}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ConcurrentDictionaryExample", "ConcurrentDictionaryExample\ConcurrentDictionaryExample.csproj", "{AA159DE4-1495-47BC-81A8-00A7E3F8F367}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -21,6 +23,10 @@ Global
 		{6A3C1D83-7ABF-4990-B9BD-1CB268EA296C}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{6A3C1D83-7ABF-4990-B9BD-1CB268EA296C}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{6A3C1D83-7ABF-4990-B9BD-1CB268EA296C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{AA159DE4-1495-47BC-81A8-00A7E3F8F367}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{AA159DE4-1495-47BC-81A8-00A7E3F8F367}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{AA159DE4-1495-47BC-81A8-00A7E3F8F367}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{AA159DE4-1495-47BC-81A8-00A7E3F8F367}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
