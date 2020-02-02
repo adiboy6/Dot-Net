@@ -29,9 +29,8 @@ namespace CalculatorExceptionHandling
         {
             if (a == double.MaxValue || a == double.MinValue || b == double.MaxValue || b == double.MinValue)
                 throw new OverflowException("Division Overflow");
-            if((a != 0 && b==0) || (a == 0 && b != 0))
-                throw new 
-            if (b == 0.0f)
+            
+            else if (b == 0.0f)
             {
                 throw new DivideByZeroException();
             }

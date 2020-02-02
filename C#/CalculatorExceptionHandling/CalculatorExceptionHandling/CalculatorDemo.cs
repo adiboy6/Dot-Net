@@ -4,9 +4,48 @@ namespace CalculatorExceptionHandling
 {
     class CalculatorDemo
     {
+        public static int string_to_int(string raw_number)
+        {
+            int number;
+
+            if (raw_number.Contains("."))
+                throw new CustomException("Invalid format");
+
+            number = Convert.ToInt32(raw_number);
+            return number;
+        }
+
         static void Main(string[] args)
         {
             CalculatorMethods calculatorMethods = new CalculatorMethods();
+
+            Console.WriteLine("Enter two integer numbers:");
+
+            try
+            { 
+                int number1 = string_to_int(Console.ReadLine());
+            }
+            catch(CustomException ex)
+            {
+                Console.WriteLine(ex);
+            }
+            catch (OverflowException ex)
+            {
+                Console.WriteLine(ex);
+            }
+
+            try
+            {
+                int number2 = string_to_int(Console.ReadLine());
+            }
+            catch (CustomException ex)
+            {
+                Console.WriteLine(ex);
+            }
+            catch (OverflowException ex)
+            {
+                Console.WriteLine(ex);
+            }
 
             try
             {

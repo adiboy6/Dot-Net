@@ -4,11 +4,11 @@ using System.Text;
 
 namespace CalculatorExceptionHandling
 {
-    class CustomException : Exception
+    class CustomException : ApplicationException
     {
-        public CustomException()
+        public CustomException(string message) : base(message)
         {
-            MessageBox/
+
         }
     }
 }
