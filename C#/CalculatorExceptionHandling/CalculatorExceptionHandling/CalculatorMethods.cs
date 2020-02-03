@@ -21,7 +21,7 @@ namespace CalculatorExceptionHandling
         }
         public int multiply(int a, int b)
         {
-            if ((a == int.MaxValue && b > 0) || (b == int.MaxValue && a > 0))
+            if ((a == int.MaxValue && b > 0) || (b == int.MaxValue && a > 0) || (a == int.MinValue && b < 0) || (b == int.MinValue && a < 0))
                 throw new OverflowException("Multiplication Overflow");
             return a * b;
         }
@@ -29,10 +29,9 @@ namespace CalculatorExceptionHandling
         {
             if (a == double.MaxValue || a == double.MinValue || b == double.MaxValue || b == double.MinValue)
                 throw new OverflowException("Division Overflow");
-            
-            else if (b == 0.0f)
+            if (b == 0.0f)
             {
-                throw new DivideByZeroException();
+                throw new DivideByZeroException("Division by zero not permitted");
             }
             return a / b;
         }
