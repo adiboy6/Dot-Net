@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Elmah;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
@@ -18,12 +19,14 @@ namespace WebApplication2
             RouteConfig.RegisterRoutes(RouteTable.Routes);
             BundleConfig.RegisterBundles(BundleTable.Bundles);
             log4net.Config.XmlConfigurator.Configure();
-            logger.Error("Aditya");
+            logger.Error("Error");
+            logger.Info("Info");
+
         }
 
         //public static void RegisterRoutes(RouteCollection routes)
         //{
-        //   routes.Ignore("elmah.axd");
+        //    routes.Ignore("elmah.axd");
 
         //}
     }
