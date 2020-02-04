@@ -1,9 +1,13 @@
 ﻿using System;
+using log4net;
+
+[assembly: log4net.Config.XmlConfigurator(Watch = true)]
 
 namespace CalculatorExceptionHandling
 {
     class CalculatorDemo
     {
+        private static readonly log4net.ILog log = log4net.LogManager.GetLogger(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType);
         public static int string_to_integer()
         {
             int number = 0;
@@ -145,10 +149,13 @@ namespace CalculatorExceptionHandling
 
         static void Main(string[] args)
         {
-            int number1 = input();
-            int number2 = input();
+            log.Error("Hello World");
 
-            selectOption(number1, number2);
+            //int number1 = input();
+            //int number2 = input();
+
+            //selectOption(number1, number2);
+
 
         }
     }
