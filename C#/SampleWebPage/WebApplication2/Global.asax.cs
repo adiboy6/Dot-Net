@@ -24,6 +24,13 @@ namespace WebApplication2
 
         }
 
+        void Application_Error(object sender, EventArgs e)
+        {
+            Exception ex = Server.GetLastError();
+            logger.Error(ex);
+        }
+
+
         //public static void RegisterRoutes(RouteCollection routes)
         //{
         //    routes.Ignore("elmah.axd");

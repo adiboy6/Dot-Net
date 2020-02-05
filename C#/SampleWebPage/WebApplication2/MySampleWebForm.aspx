@@ -21,17 +21,17 @@
         }
         .auto-style6 {
             width: 418px;
-            height: 46px;
+            height: 20px;
         }
         .auto-style7 {
-            height: 46px;
+            height: 20px;
         }
     </style>
 </head>
-<body>
+<body style="">
     <form id="form1" runat="server">
         <div>
-            <table class="auto-style2" draggable="false">
+            <table class="auto-style2" draggable="false" align="center">
                 <tr>
                     <td class="auto-style3" style="text-align: center; vertical-align: middle">
                         <asp:Label ID="Label1" runat="server" Text="LOGIN"></asp:Label>
