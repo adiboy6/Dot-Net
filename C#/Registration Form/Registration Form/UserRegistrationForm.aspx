@@ -35,6 +35,15 @@
             text-align: left;
             height: 83px;
         }
+        .auto-style8 {
+            text-align: right;
+            width: 715px;
+            height: 30px;
+        }
+        .auto-style9 {
+            text-align: left;
+            height: 30px;
+        }
     </style>
 </head>
 <body>
@@ -64,10 +73,11 @@
                         <asp:Label ID="Label3" runat="server" Text="Gender"></asp:Label>
                     </td>
                     <td>
-                        <asp:RadioButtonList ID="RadioButtonList1" runat="server" RepeatDirection="Horizontal">
+                        <asp:RadioButtonList ID="RadioButtonList1" runat="server" RepeatDirection="Horizontal" OnSelectedIndexChanged="RadioButtonList1_SelectedIndexChanged">
                             <asp:ListItem Value="1">Male</asp:ListItem>
                             <asp:ListItem Value="0">Female</asp:ListItem>
                         </asp:RadioButtonList>
+                        <asp:Label ID="GenderValidityLabel" runat="server" Text="*" ForeColor="Red"></asp:Label>
                     </td>
                 </tr>
                 <tr>
@@ -126,15 +136,17 @@
                             <asp:ListItem Value="1">.Net</asp:ListItem>
                             <asp:ListItem Value="0">Java</asp:ListItem>
                         </asp:CheckBoxList>
+                        <asp:Label ID="StreamValidityLabel" runat="server" Text="*" ForeColor="Red"></asp:Label>
                     </td>
                 </tr>
                 <tr>
-                    <td class="auto-style2">
+                    <td class="auto-style8">
                         <asp:Label ID="Label9" runat="server" Text="Phone Number"></asp:Label>
                     </td>
-                    <td class="auto-style3">
-                        <asp:TextBox ID="TextBox3" runat="server" TextMode="Phone" Width="210px"></asp:TextBox>
+                    <td class="auto-style9">
+                        <asp:TextBox ID="PhoneNumberTextBox" runat="server" TextMode="Phone" Width="210px"></asp:TextBox>
                         <asp:Label ID="PhoneNoValidateLabel" runat="server" ForeColor="Red" Text="*"></asp:Label>
+                        <asp:RegularExpressionValidator ID="PhoneNumberRegularExpressionValidator" runat="server" ControlToValidate="PhoneNumberTextBox" ErrorMessage="Enter a valid Phone number" ForeColor="Red" ValidationExpression="[0-9][0-9][0-9][0-9][0-9][0-9][0-9][0-9][0-9][0-9]"></asp:RegularExpressionValidator>
                     </td>
                 </tr>
                 <tr>
@@ -142,7 +154,7 @@
                         <asp:Label ID="Label10" runat="server" Text="E-Mail"></asp:Label>
                     </td>
                     <td class="auto-style5">
-                        <asp:TextBox ID="TextBox4" runat="server" TextMode="Email" Width="213px"></asp:TextBox>
+                        <asp:TextBox ID="TextBox4" runat="server" TextMode="Email" Width="213px" ValidateRequestMode="Enabled"></asp:TextBox>
                         <asp:Label ID="EMailValidateLabel" runat="server" ForeColor="Red" Text="*"></asp:Label>
                     </td>
                 </tr>

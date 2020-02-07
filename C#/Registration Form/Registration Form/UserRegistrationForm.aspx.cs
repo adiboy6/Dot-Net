@@ -1,10 +1,7 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Data;
+using System.Reflection;
 using System.Data.SqlClient;
-using System.Linq;
-using System.Web;
-using System.Web.UI;
 using System.Web.UI.WebControls;
 
 namespace Registration_Form
@@ -80,13 +77,30 @@ namespace Registration_Form
 
             TextBox1.Text = string.Empty;
             TextBox2.Text = string.Empty;
-            TextBox3.Text = string.Empty;
+            PhoneNumberTextBox.Text = string.Empty;
             TextBox4.Text = string.Empty;
 
             RadioButtonList1.ClearSelection();
 
             CheckBoxList1.ClearSelection();
 
+            FirstNameValidateLabel.Visible = true;
+            FirstNameValidateLabel.Text = "*";
+
+            LastNameValidateLabel.Visible = true;
+            LastNameValidateLabel.Text = "*";
+
+            PhoneNoValidateLabel.Visible = true;
+            PhoneNoValidateLabel.Text = "*";
+
+            EMailValidateLabel.Visible = true;
+            EMailValidateLabel.Text = "*";
+
+            GenderValidityLabel.Text = "*";
+            GenderValidityLabel.Visible = true;
+
+            StreamValidityLabel.Text = "*";
+            StreamValidityLabel.Visible = true;
         }
 
         protected void ValidationMessage(Label label,string message)
@@ -106,8 +120,22 @@ namespace Registration_Form
         {
             CheckTextBoxValidity(TextBox1, FirstNameValidateLabel, "First Name is Required");
             CheckTextBoxValidity(TextBox2, LastNameValidateLabel, "Last Name is Required");
-            CheckTextBoxValidity(TextBox3, PhoneNoValidateLabel, "Phone Number is Required");
+            CheckTextBoxValidity(PhoneNumberTextBox, PhoneNoValidateLabel, "Phone Number is Required");
             CheckTextBoxValidity(TextBox4, EMailValidateLabel,"E-Mail is Required");
+
+            if (RadioButtonList1.SelectedItem == null)
+                GenderValidityLabel.Text = "Gender is required";
+            else
+                GenderValidityLabel.Visible = false;
+
+            if (CheckBoxList1.SelectedValue.Length == 0)
+                StreamValidityLabel.Text = "Please choos any one of the Stream";
+            else
+                StreamValidityLabel.Visible = false;
+        }
+
+        protected void RadioButtonList1_SelectedIndexChanged(object sender, EventArgs e)
+        {
 
         }
     }

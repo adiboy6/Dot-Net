@@ -96,6 +96,15 @@ namespace Registration_Form
         protected global::System.Web.UI.WebControls.RadioButtonList RadioButtonList1;
 
         /// <summary>
+        /// GenderValidityLabel control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label GenderValidityLabel;
+
+        /// <summary>
         /// Label4 control.
         /// </summary>
         /// <remarks>
@@ -186,6 +195,15 @@ namespace Registration_Form
         protected global::System.Web.UI.WebControls.CheckBoxList CheckBoxList1;
 
         /// <summary>
+        /// StreamValidityLabel control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label StreamValidityLabel;
+
+        /// <summary>
         /// Label9 control.
         /// </summary>
         /// <remarks>
@@ -195,13 +213,13 @@ namespace Registration_Form
         protected global::System.Web.UI.WebControls.Label Label9;
 
         /// <summary>
-        /// TextBox3 control.
+        /// PhoneNumberTextBox control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox TextBox3;
+        protected global::System.Web.UI.WebControls.TextBox PhoneNumberTextBox;
 
         /// <summary>
         /// PhoneNoValidateLabel control.
@@ -211,6 +229,15 @@ namespace Registration_Form
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Label PhoneNoValidateLabel;
+
+        /// <summary>
+        /// PhoneNumberRegularExpressionValidator control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.RegularExpressionValidator PhoneNumberRegularExpressionValidator;
 
         /// <summary>
         /// Label10 control.
