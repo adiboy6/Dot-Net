@@ -42,6 +42,15 @@ namespace Registration_Form
         protected global::System.Web.UI.WebControls.TextBox TextBox1;
 
         /// <summary>
+        /// FirstNameValidateLabel control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label FirstNameValidateLabel;
+
+        /// <summary>
         /// Label2 control.
         /// </summary>
         /// <remarks>
@@ -58,6 +67,15 @@ namespace Registration_Form
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.TextBox TextBox2;
+
+        /// <summary>
+        /// LastNameValidateLabel control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label LastNameValidateLabel;
 
         /// <summary>
         /// Label3 control.
@@ -186,6 +204,15 @@ namespace Registration_Form
         protected global::System.Web.UI.WebControls.TextBox TextBox3;
 
         /// <summary>
+        /// PhoneNoValidateLabel control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label PhoneNoValidateLabel;
+
+        /// <summary>
         /// Label10 control.
         /// </summary>
         /// <remarks>
@@ -202,5 +229,32 @@ namespace Registration_Form
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.TextBox TextBox4;
+
+        /// <summary>
+        /// EMailValidateLabel control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label EMailValidateLabel;
+
+        /// <summary>
+        /// SubmitButton control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button SubmitButton;
+
+        /// <summary>
+        /// Button3 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button Button3;
     }
 }
