@@ -29,29 +29,35 @@ namespace Registration_Form
         protected void CountryDropDownList_SelectedIndexChanged(object sender, EventArgs e)
         {
             StateDropDownList.Items.Clear();
-            StateDropDownList.Items.Add("Select State");
+            StateDropDownList.Items.Add("--Select State--");
 
             SqlConnection sqlConnection = new SqlConnection("Data Source=LAPTOP-2JS0NULB;Initial Catalog=FormsDB;Integrated Security=True");
-            SqlCommand sqlCommand = new SqlCommand("SELECT * FROM State WHERE Country_Id=" + CountryDropDownList.SelectedItem.Value, sqlConnection);
-            SqlDataAdapter sda = new SqlDataAdapter(sqlCommand);
-            DataTable dt = new DataTable();
-            sda.Fill(dt);
-            StateDropDownList.DataSource = dt;
-            StateDropDownList.DataBind();
+            if (CountryDropDownList.SelectedItem.Value != "--Select Country--")
+            {
+                SqlCommand sqlCommand = new SqlCommand("SELECT * FROM State WHERE Country_Id=" + CountryDropDownList.SelectedItem.Value, sqlConnection);
+                SqlDataAdapter sda = new SqlDataAdapter(sqlCommand);
+                DataTable dt = new DataTable();
+                sda.Fill(dt);
+                StateDropDownList.DataSource = dt;
+                StateDropDownList.DataBind();
+            }
         }
 
         protected void StateDropDownList_SelectedIndexChanged(object sender, EventArgs e)
         {
             CityDropDownList.Items.Clear();
-            CityDropDownList.Items.Add("Select City");
+            CityDropDownList.Items.Add("--Select City--");
 
             SqlConnection sqlConnection = new SqlConnection("Data Source=LAPTOP-2JS0NULB;Initial Catalog=FormsDB;Integrated Security=True");
-            SqlCommand sqlCommand = new SqlCommand("SELECT * FROM City WHERE State_Id=" + StateDropDownList.SelectedItem.Value, sqlConnection);
-            SqlDataAdapter sda = new SqlDataAdapter(sqlCommand);
-            DataTable dt = new DataTable();
-            sda.Fill(dt);
-            CityDropDownList.DataSource = dt;
-            CityDropDownList.DataBind();
+            if (StateDropDownList.SelectedItem.Text != "--Select State--")
+            {
+                SqlCommand sqlCommand = new SqlCommand("SELECT * FROM City WHERE State_Id=" + StateDropDownList.SelectedItem.Value, sqlConnection);
+                SqlDataAdapter sda = new SqlDataAdapter(sqlCommand);
+                DataTable dt = new DataTable();
+                sda.Fill(dt);
+                CityDropDownList.DataSource = dt;
+                CityDropDownList.DataBind();
+            }
         }
 
         protected void CityDropDownList_SelectedIndexChanged(object sender, EventArgs e)

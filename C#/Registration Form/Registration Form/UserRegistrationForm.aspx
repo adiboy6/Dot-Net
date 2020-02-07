@@ -22,8 +22,6 @@
 <body>
     <form id="form1" runat="server">
         <div>
-            <asp:DropDownList ID="DropDownList3" runat="server">
-            </asp:DropDownList>
             <table align="right" class="auto-style1">
                 <tr>
                     <td class="auto-style2">
@@ -108,6 +106,22 @@
                             <asp:ListItem Value="1">.Net</asp:ListItem>
                             <asp:ListItem Value="0">Java</asp:ListItem>
                         </asp:CheckBoxList>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="auto-style2">
+                        <asp:Label ID="Label9" runat="server" Text="Phone Number"></asp:Label>
+                    </td>
+                    <td class="auto-style3">
+                        <asp:TextBox ID="TextBox3" runat="server" TextMode="Phone" Width="210px"></asp:TextBox>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="auto-style2">
+                        <asp:Label ID="Label10" runat="server" Text="E-Mail"></asp:Label>
+                    </td>
+                    <td class="auto-style3">
+                        <asp:TextBox ID="TextBox4" runat="server" TextMode="Email" Width="213px"></asp:TextBox>
                     </td>
                 </tr>
             </table>
