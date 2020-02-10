@@ -9,7 +9,7 @@ namespace Registration_Form
     public partial class UserRegistrationForm : System.Web.UI.Page
     {
 
-        private string ConnectionString = "Data Source=LAPTOP-2JS0NULB;Initial Catalog=FormsDB;Integrated Security=True";
+        private string ConnectionString = "Data Source=EPINHYDW011C\\MSSQLSERVER1;Initial Catalog=FormDB;Integrated Security=True";
 
         protected void Page_Load(object sender, EventArgs e)
         {
@@ -62,11 +62,6 @@ namespace Registration_Form
             }
         }
 
-        protected void CityDropDownList_SelectedIndexChanged(object sender, EventArgs e)
-        {
-
-        }
-
         protected void Button3_Click(object sender, EventArgs e)
         {
             CountryDropDownList.SelectedIndex = 0;
@@ -101,6 +96,9 @@ namespace Registration_Form
 
             StreamValidityLabel.Text = "*";
             StreamValidityLabel.Visible = true;
+
+            DOBValidationLabel.Text = "*";
+            DOBValidationLabel.Visible = true;
         }
 
         protected void ValidationMessage(Label label,string message)
@@ -121,7 +119,7 @@ namespace Registration_Form
             CheckTextBoxValidity(FirstNameTextBox, FirstNameValidateLabel, "First Name is Required");
             CheckTextBoxValidity(LastNameTextBox, LastNameValidateLabel, "Last Name is Required");
             CheckTextBoxValidity(PhoneNumberTextBox, PhoneNoValidateLabel, "Phone Number is Required");
-            CheckTextBoxValidity(EMailTextBox, EMailValidateLabel,"E-Mail is Required");
+            CheckTextBoxValidity(EMailTextBox, EMailValidateLabel, "E-Mail is Required");
 
             if (GenderRadioButtonList.SelectedItem == null)
                 GenderValidityLabel.Text = "Gender is required";
@@ -129,14 +127,33 @@ namespace Registration_Form
                 GenderValidityLabel.Visible = false;
 
             if (StreamCheckBoxList.SelectedValue.Length == 0)
-                StreamValidityLabel.Text = "Please choos any one of the Stream";
+                StreamValidityLabel.Text = "Please choose any one of the Stream";
             else
                 StreamValidityLabel.Visible = false;
+
+            if (DOBCalendar.SelectedDate == new DateTime(0001, 1, 1, 0, 0, 0) || DOBCalendar.SelectedDate == DateTime.Now.Date || DOBCalendar.SelectedDate.Date.CompareTo(DateTime.Now.Date)>0)
+                DOBValidationLabel.Text = "Invalid Date Of Birth";
+            else
+                DOBValidationLabel.Visible = false;
+
+            if (CountryDropDownList.SelectedValue == "--Select Country--")
+                CountryValidityLabel.Text = "Please choose a country";
+            else
+            {
+                if (StateDropDownList.SelectedValue == "--Select State--")
+                    StateValidityLabel.Text = "Please choose a state";
+                else
+                {
+                    if (CityDropDownList.Text == "--Select City--")
+                        CityValidityLabel.Text = "Please choose a city";
+                    else
+                        CityValidityLabel.Visible = false;
+
+                    StateValidityLabel.Visible = false;
+                }
+                CountryValidityLabel.Visible = false;
+            }
         }
 
-        protected void RadioButtonList1_SelectedIndexChanged(object sender, EventArgs e)
-        {
-
-        }
     }
 }

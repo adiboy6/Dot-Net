@@ -114,13 +114,22 @@ namespace Registration_Form
         protected global::System.Web.UI.WebControls.Label Label4;
 
         /// <summary>
-        /// Calendar1 control.
+        /// DOBCalendar control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Calendar Calendar1;
+        protected global::System.Web.UI.WebControls.Calendar DOBCalendar;
+
+        /// <summary>
+        /// DOBValidationLabel control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label DOBValidationLabel;
 
         /// <summary>
         /// Label5 control.
@@ -141,6 +150,15 @@ namespace Registration_Form
         protected global::System.Web.UI.WebControls.DropDownList CountryDropDownList;
 
         /// <summary>
+        /// CountryValidityLabel control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label CountryValidityLabel;
+
+        /// <summary>
         /// Label6 control.
         /// </summary>
         /// <remarks>
@@ -157,6 +175,15 @@ namespace Registration_Form
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.DropDownList StateDropDownList;
+
+        /// <summary>
+        /// StateValidityLabel control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label StateValidityLabel;
 
         /// <summary>
         /// Label7 control.
@@ -177,6 +204,15 @@ namespace Registration_Form
         protected global::System.Web.UI.WebControls.DropDownList CityDropDownList;
 
         /// <summary>
+        /// CityValidityLabel control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label CityValidityLabel;
+
+        /// <summary>
         /// Label8 control.
         /// </summary>
         /// <remarks>
@@ -186,7 +222,7 @@ namespace Registration_Form
         protected global::System.Web.UI.WebControls.Label Label8;
 
         /// <summary>
-        /// CheckBoxList1 control.
+        /// StreamCheckBoxList control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.

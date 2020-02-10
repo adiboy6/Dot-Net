@@ -45,7 +45,7 @@
             height: 30px;
         }
     </style>
-    <script scr='FormValidate.js' type="text/javascript"></script> 
+    <script src="FormValidate.js" type="text/javascript"></script> 
 </head>
 <body>
     <form id="form1" runat="server">
@@ -74,7 +74,7 @@
                         <asp:Label ID="Label3" runat="server" Text="Gender"></asp:Label>
                     </td>
                     <td>
-                        <asp:RadioButtonList ID="GenderRadioButtonList" runat="server" RepeatDirection="Horizontal" OnSelectedIndexChanged="RadioButtonList1_SelectedIndexChanged">
+                        <asp:RadioButtonList ID="GenderRadioButtonList" runat="server" RepeatDirection="Horizontal">
                             <asp:ListItem Value="1">Male</asp:ListItem>
                             <asp:ListItem Value="0">Female</asp:ListItem>
                         </asp:RadioButtonList>
@@ -86,7 +86,7 @@
                         <asp:Label ID="Label4" runat="server" Text="Date of Birth"></asp:Label>
                     </td>
                     <td class="auto-style3">
-                        <asp:Calendar ID="Calendar1" runat="server" BackColor="White" BorderColor="#999999" CellPadding="4" DayNameFormat="Shortest" Font-Names="Verdana" Font-Size="8pt" ForeColor="Black" Height="180px" Width="200px">
+                        <asp:Calendar ID="DOBCalendar" runat="server" BackColor="White" BorderColor="#999999" CellPadding="4" DayNameFormat="Shortest" Font-Names="Verdana" Font-Size="8pt" ForeColor="Black" Height="180px" Width="200px">
                             <DayHeaderStyle BackColor="#CCCCCC" Font-Bold="True" Font-Size="7pt" />
                             <NextPrevStyle VerticalAlign="Bottom" />
                             <OtherMonthDayStyle ForeColor="#808080" />
@@ -96,6 +96,7 @@
                             <TodayDayStyle BackColor="#CCCCCC" ForeColor="Black" />
                             <WeekendDayStyle BackColor="#FFFFCC" />
                         </asp:Calendar>
+                        <asp:Label ID="DOBValidationLabel" runat="server" Text="*" ForeColor="Red"></asp:Label>
                     </td>
                 </tr>
                 <tr>
@@ -103,9 +104,10 @@
                         <asp:Label ID="Label5" runat="server" Text="Country"></asp:Label>
                     </td>
                     <td class="auto-style3">
-                        <asp:DropDownList ID="CountryDropDownList" runat="server" DataTextField="Country_Name" DataValueField="Country_Id" AppendDataBoundItems="true" OnSelectedIndexChanged="CountryDropDownList_SelectedIndexChanged" AutoPostBack="true">
+                        <asp:DropDownList ID="CountryDropDownList" runat="server" DataTextField="Country_Name" DataValueField="Id" AppendDataBoundItems="true" OnSelectedIndexChanged="CountryDropDownList_SelectedIndexChanged" AutoPostBack="true">
                             <asp:ListItem>--Select Country--</asp:ListItem>
                         </asp:DropDownList>
+                        <asp:Label ID="CountryValidityLabel" runat="server" Text="*" ForeColor="Red"></asp:Label>
                     </td>
                 </tr>
                 <tr>
@@ -113,9 +115,10 @@
                         <asp:Label ID="Label6" runat="server" Text="State"></asp:Label>
                     </td>
                     <td class="auto-style3">
-                        <asp:DropDownList ID="StateDropDownList" runat="server" DataTextField="State_Name" DataValueField="State_Id" AppendDataBoundItems="true" OnSelectedIndexChanged="StateDropDownList_SelectedIndexChanged" AutoPostBack="true">
+                        <asp:DropDownList ID="StateDropDownList" runat="server" DataTextField="State_Name" DataValueField="Id" AppendDataBoundItems="true" OnSelectedIndexChanged="StateDropDownList_SelectedIndexChanged" AutoPostBack="true">
                             <asp:ListItem>--Select State--</asp:ListItem>
                         </asp:DropDownList>
+                        <asp:Label ID="StateValidityLabel" runat="server" Text="*" ForeColor="Red"></asp:Label>
                     </td>
                 </tr>
                 <tr>
@@ -123,9 +126,10 @@
                         <asp:Label ID="Label7" runat="server" Text="City"></asp:Label>
                     </td>
                     <td class="auto-style3">
-                        <asp:DropDownList ID="CityDropDownList" runat="server" DataTextField="City_Name" DataValueField="City_Id" AppendDataBoundItems="true" OnSelectedIndexChanged="CityDropDownList_SelectedIndexChanged" AutoPostBack="true">
+                        <asp:DropDownList ID="CityDropDownList" runat="server" DataTextField="City_Name" DataValueField="Id" AppendDataBoundItems="true" AutoPostBack="true">
                             <asp:ListItem>--Select City--</asp:ListItem>
                         </asp:DropDownList>
+                        <asp:Label ID="CityValidityLabel" runat="server" Text="*" ForeColor="Red"></asp:Label>
                     </td>
                 </tr>
                 <tr>
@@ -162,7 +166,7 @@
                     <td class="auto-style6">
                         &nbsp;</td>
                     <td class="auto-style7">
-                        <asp:Button ID="SubmitButton" runat="server" OnClick="SubmitButton_Click" Text="Submit" />
+                        <asp:Button ID="SubmitButton" runat="server" OnClick="SubmitButton_Click" Text="Submit" OnClientClick="javascript:return validateUser()" />
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                         <asp:Button ID="Button3" runat="server" OnClick="Button3_Click" Text="Reset" />
 &nbsp;&nbsp;&nbsp;
