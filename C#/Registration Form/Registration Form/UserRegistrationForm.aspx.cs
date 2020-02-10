@@ -9,7 +9,7 @@ namespace Registration_Form
     public partial class UserRegistrationForm : System.Web.UI.Page
     {
 
-        private string ConnectionString = "Data Source=EPINHYDW011C\\MSSQLSERVER1;Initial Catalog=FormDB;Integrated Security=True";
+        private string ConnectionString = "Data Source=LAPTOP-2JS0NULB;Initial Catalog=FormsDB;Integrated Security=True";
 
         protected void Page_Load(object sender, EventArgs e)
         {
@@ -75,14 +75,14 @@ namespace Registration_Form
             CityDropDownList.Items.Clear();
             CityDropDownList.Items.Add("--Select City--");
 
-            TextBox1.Text = string.Empty;
-            TextBox2.Text = string.Empty;
+            FirstNameTextBox.Text = string.Empty;
+            LastNameTextBox.Text = string.Empty;
             PhoneNumberTextBox.Text = string.Empty;
-            TextBox4.Text = string.Empty;
+            EMailTextBox.Text = string.Empty;
 
-            RadioButtonList1.ClearSelection();
+            GenderRadioButtonList.ClearSelection();
 
-            CheckBoxList1.ClearSelection();
+            StreamCheckBoxList.ClearSelection();
 
             FirstNameValidateLabel.Visible = true;
             FirstNameValidateLabel.Text = "*";
@@ -118,17 +118,17 @@ namespace Registration_Form
 
         protected void SubmitButton_Click(object sender, EventArgs e)
         {
-            CheckTextBoxValidity(TextBox1, FirstNameValidateLabel, "First Name is Required");
-            CheckTextBoxValidity(TextBox2, LastNameValidateLabel, "Last Name is Required");
+            CheckTextBoxValidity(FirstNameTextBox, FirstNameValidateLabel, "First Name is Required");
+            CheckTextBoxValidity(LastNameTextBox, LastNameValidateLabel, "Last Name is Required");
             CheckTextBoxValidity(PhoneNumberTextBox, PhoneNoValidateLabel, "Phone Number is Required");
-            CheckTextBoxValidity(TextBox4, EMailValidateLabel,"E-Mail is Required");
+            CheckTextBoxValidity(EMailTextBox, EMailValidateLabel,"E-Mail is Required");
 
-            if (RadioButtonList1.SelectedItem == null)
+            if (GenderRadioButtonList.SelectedItem == null)
                 GenderValidityLabel.Text = "Gender is required";
             else
                 GenderValidityLabel.Visible = false;
 
-            if (CheckBoxList1.SelectedValue.Length == 0)
+            if (StreamCheckBoxList.SelectedValue.Length == 0)
                 StreamValidityLabel.Text = "Please choos any one of the Stream";
             else
                 StreamValidityLabel.Visible = false;

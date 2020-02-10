@@ -33,13 +33,13 @@ namespace Registration_Form
         protected global::System.Web.UI.WebControls.Label Label1;
 
         /// <summary>
-        /// TextBox1 control.
+        /// FirstNameTextBox control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox TextBox1;
+        protected global::System.Web.UI.WebControls.TextBox FirstNameTextBox;
 
         /// <summary>
         /// FirstNameValidateLabel control.
@@ -60,13 +60,13 @@ namespace Registration_Form
         protected global::System.Web.UI.WebControls.Label Label2;
 
         /// <summary>
-        /// TextBox2 control.
+        /// LastNameTextBox control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox TextBox2;
+        protected global::System.Web.UI.WebControls.TextBox LastNameTextBox;
 
         /// <summary>
         /// LastNameValidateLabel control.
@@ -87,13 +87,13 @@ namespace Registration_Form
         protected global::System.Web.UI.WebControls.Label Label3;
 
         /// <summary>
-        /// RadioButtonList1 control.
+        /// GenderRadioButtonList control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.RadioButtonList RadioButtonList1;
+        protected global::System.Web.UI.WebControls.RadioButtonList GenderRadioButtonList;
 
         /// <summary>
         /// GenderValidityLabel control.
@@ -192,7 +192,7 @@ namespace Registration_Form
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.CheckBoxList CheckBoxList1;
+        protected global::System.Web.UI.WebControls.CheckBoxList StreamCheckBoxList;
 
         /// <summary>
         /// StreamValidityLabel control.
@@ -231,15 +231,6 @@ namespace Registration_Form
         protected global::System.Web.UI.WebControls.Label PhoneNoValidateLabel;
 
         /// <summary>
-        /// PhoneNumberRegularExpressionValidator control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.RegularExpressionValidator PhoneNumberRegularExpressionValidator;
-
-        /// <summary>
         /// Label10 control.
         /// </summary>
         /// <remarks>
@@ -249,13 +240,13 @@ namespace Registration_Form
         protected global::System.Web.UI.WebControls.Label Label10;
 
         /// <summary>
-        /// TextBox4 control.
+        /// EMailTextBox control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox TextBox4;
+        protected global::System.Web.UI.WebControls.TextBox EMailTextBox;
 
         /// <summary>
         /// EMailValidateLabel control.

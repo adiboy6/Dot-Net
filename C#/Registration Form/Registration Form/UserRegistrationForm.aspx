@@ -45,6 +45,7 @@
             height: 30px;
         }
     </style>
+    <script scr='FormValidate.js' type="text/javascript"></script> 
 </head>
 <body>
     <form id="form1" runat="server">
@@ -55,7 +56,7 @@
                         <asp:Label ID="Label1" runat="server" Text="First Name"></asp:Label>
                     </td>
                     <td class="auto-style3">
-                        <asp:TextBox ID="TextBox1" runat="server"></asp:TextBox>
+                        <asp:TextBox ID="FirstNameTextBox" runat="server"></asp:TextBox>
                         <asp:Label ID="FirstNameValidateLabel" runat="server" ForeColor="Red" Text="*"></asp:Label>
                     </td>
                 </tr>
@@ -64,7 +65,7 @@
                         <asp:Label ID="Label2" runat="server" Text="Last Name"></asp:Label>
                     </td>
                     <td class="auto-style3">
-                        <asp:TextBox ID="TextBox2" runat="server"></asp:TextBox>
+                        <asp:TextBox ID="LastNameTextBox" runat="server"></asp:TextBox>
                         <asp:Label ID="LastNameValidateLabel" runat="server" ForeColor="Red" Text="*"></asp:Label>
                     </td>
                 </tr>
@@ -73,7 +74,7 @@
                         <asp:Label ID="Label3" runat="server" Text="Gender"></asp:Label>
                     </td>
                     <td>
-                        <asp:RadioButtonList ID="RadioButtonList1" runat="server" RepeatDirection="Horizontal" OnSelectedIndexChanged="RadioButtonList1_SelectedIndexChanged">
+                        <asp:RadioButtonList ID="GenderRadioButtonList" runat="server" RepeatDirection="Horizontal" OnSelectedIndexChanged="RadioButtonList1_SelectedIndexChanged">
                             <asp:ListItem Value="1">Male</asp:ListItem>
                             <asp:ListItem Value="0">Female</asp:ListItem>
                         </asp:RadioButtonList>
@@ -102,7 +103,7 @@
                         <asp:Label ID="Label5" runat="server" Text="Country"></asp:Label>
                     </td>
                     <td class="auto-style3">
-                        <asp:DropDownList ID="CountryDropDownList" runat="server" DataTextField="Country_Name" DataValueField="Id" AppendDataBoundItems="true" OnSelectedIndexChanged="CountryDropDownList_SelectedIndexChanged" AutoPostBack="true">
+                        <asp:DropDownList ID="CountryDropDownList" runat="server" DataTextField="Country_Name" DataValueField="Country_Id" AppendDataBoundItems="true" OnSelectedIndexChanged="CountryDropDownList_SelectedIndexChanged" AutoPostBack="true">
                             <asp:ListItem>--Select Country--</asp:ListItem>
                         </asp:DropDownList>
                     </td>
@@ -112,7 +113,7 @@
                         <asp:Label ID="Label6" runat="server" Text="State"></asp:Label>
                     </td>
                     <td class="auto-style3">
-                        <asp:DropDownList ID="StateDropDownList" runat="server" DataTextField="State_Name" DataValueField="Id" AppendDataBoundItems="true" OnSelectedIndexChanged="StateDropDownList_SelectedIndexChanged" AutoPostBack="true">
+                        <asp:DropDownList ID="StateDropDownList" runat="server" DataTextField="State_Name" DataValueField="State_Id" AppendDataBoundItems="true" OnSelectedIndexChanged="StateDropDownList_SelectedIndexChanged" AutoPostBack="true">
                             <asp:ListItem>--Select State--</asp:ListItem>
                         </asp:DropDownList>
                     </td>
@@ -122,7 +123,7 @@
                         <asp:Label ID="Label7" runat="server" Text="City"></asp:Label>
                     </td>
                     <td class="auto-style3">
-                        <asp:DropDownList ID="CityDropDownList" runat="server" DataTextField="City_Name" DataValueField="Id" AppendDataBoundItems="true" OnSelectedIndexChanged="CityDropDownList_SelectedIndexChanged" AutoPostBack="true">
+                        <asp:DropDownList ID="CityDropDownList" runat="server" DataTextField="City_Name" DataValueField="City_Id" AppendDataBoundItems="true" OnSelectedIndexChanged="CityDropDownList_SelectedIndexChanged" AutoPostBack="true">
                             <asp:ListItem>--Select City--</asp:ListItem>
                         </asp:DropDownList>
                     </td>
@@ -132,7 +133,7 @@
                         <asp:Label ID="Label8" runat="server" Text="Stream"></asp:Label>
                     </td>
                     <td class="auto-style3">
-                        <asp:CheckBoxList ID="CheckBoxList1" runat="server" RepeatDirection="Horizontal">
+                        <asp:CheckBoxList ID="StreamCheckBoxList" runat="server" RepeatDirection="Horizontal">
                             <asp:ListItem Value="1">.Net</asp:ListItem>
                             <asp:ListItem Value="0">Java</asp:ListItem>
                         </asp:CheckBoxList>
@@ -146,7 +147,6 @@
                     <td class="auto-style9">
                         <asp:TextBox ID="PhoneNumberTextBox" runat="server" TextMode="Phone" Width="210px"></asp:TextBox>
                         <asp:Label ID="PhoneNoValidateLabel" runat="server" ForeColor="Red" Text="*"></asp:Label>
-                        <asp:RegularExpressionValidator ID="PhoneNumberRegularExpressionValidator" runat="server" ControlToValidate="PhoneNumberTextBox" ErrorMessage="Enter a valid Phone number" ForeColor="Red" ValidationExpression="[0-9][0-9][0-9][0-9][0-9][0-9][0-9][0-9][0-9][0-9]"></asp:RegularExpressionValidator>
                     </td>
                 </tr>
                 <tr>
@@ -154,7 +154,7 @@
                         <asp:Label ID="Label10" runat="server" Text="E-Mail"></asp:Label>
                     </td>
                     <td class="auto-style5">
-                        <asp:TextBox ID="TextBox4" runat="server" TextMode="Email" Width="213px" ValidateRequestMode="Enabled"></asp:TextBox>
+                        <asp:TextBox ID="EMailTextBox" runat="server" TextMode="Email" Width="213px" ValidateRequestMode="Enabled"></asp:TextBox>
                         <asp:Label ID="EMailValidateLabel" runat="server" ForeColor="Red" Text="*"></asp:Label>
                     </td>
                 </tr>
