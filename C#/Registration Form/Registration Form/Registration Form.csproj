@@ -67,6 +67,7 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Content Include="js\FormValidate_jQ.js" />
     <Content Include="js\FormValidate_JS.js" />
     <Content Include="UserRegistrationForm.aspx" />
     <Content Include="Web.config" />
