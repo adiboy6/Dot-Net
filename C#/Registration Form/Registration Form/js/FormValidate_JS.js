@@ -3,6 +3,12 @@
     //Form fields
     var FirstName = document.getElementById("FirstNameTextBox").value;
     var LastName = document.getElementById("LastNameTextBox").value;
+    var Gender = document.getElementById("GenderRadioButtonList");
+    var dob = document.getElementById("DOBCalendar").value;
+    var Country_DropDownList = document.getElementById("CountryDropDownList");
+    var State_DropDownList = document.getElementById("StateDropDownList");
+    var City_DropDownList = document.getElementById("CityDropDownList");
+    var Stream = document.getElementById("StreamCheckBoxList");
     var PhoneNumber = document.getElementById("PhoneNumberTextBox").value;
     var EMail = document.getElementById("EMailTextBox").value;
 
@@ -11,7 +17,6 @@
     var email_address_exp = "^([a-zA-Z0-9_\.\-])+\@(([a-zA-Z0-9\-])+\.)+([com\co\.\in])+$";
 
     //Gender-Radio Button List
-    var Gender = document.getElementById("GenderRadioButtonList");
     var radio = Gender.getElementsByTagName("input");
     var gender_isChecked = false;
     for (var i = 0; i < radio.length; i++) {
@@ -22,7 +27,6 @@
     }
 
     //Stream-Check Box list
-    var Stream = document.getElementById("StreamCheckBoxList");
     var checkbox = Stream.getElementsByTagName("input");
     var stream_isChecked = false;
     for (var i = 0; i < radio.length; i++) {
@@ -32,12 +36,7 @@
         }
     }
 
-    //Place- DropDownList
-    var Country_DropDownList = document.getElementById("CountryDropDownList");
-    var State_DropDownList = document.getElementById("StateDropDownList");
-    var City_DropDownList = document.getElementById("CityDropDownList");
-
-    if (FirstName == "" && LastName == "" && PhoneNumber == "" && EMail == "" && !gender_isChecked && !stream_isChecked && Country_DropDownList.value == "--Select Country--") {
+    if (FirstName == "" && LastName == "" && PhoneNumber == "" && EMail == "" && !gender_isChecked && !stream_isChecked && Country_DropDownList.value == "--Select Country--" && dob == null) {
         alert("Enter All Fields!");
         return false;
     }
@@ -54,6 +53,12 @@
 
     if (!gender_isChecked) {
         alert("Please select your gender");
+        return false;
+    }
+
+    //DoB - Calendar
+    if (dob == null || dob == Date.now()) {
+        alert("Invalid Date of Birth");
         return false;
     }
 

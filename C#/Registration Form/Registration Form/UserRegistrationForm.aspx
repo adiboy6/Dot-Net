@@ -45,7 +45,9 @@
             height: 30px;
         }
     </style>
-    <script src="FormValidate.js" type="text/javascript"></script> 
+    <script src="js\FormValidate_JS.js" type="text/javascript"></script> 
+    <script src="https://ajax.aspnetcdn.com/ajax/jQuery/jquery-3.4.1.min.js"></script>
+    <script src="js\FormValidate_jQ.js"></script>
 </head>
 <body>
     <form id="form1" runat="server">
