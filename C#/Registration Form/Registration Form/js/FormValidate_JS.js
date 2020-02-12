@@ -56,12 +56,6 @@
         return false;
     }
 
-    //DoB - Calendar
-    if (dob == null || dob == Date.now()) {
-        alert("Invalid Date of Birth");
-        return false;
-    }
-
     //Country-DropDownList
     if (Country_DropDownList.value == "--Select Country--") {
         alert("Please select your Country");
