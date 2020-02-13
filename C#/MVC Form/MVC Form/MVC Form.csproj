@@ -152,11 +152,17 @@
     <Content Include="Content\bootstrap-tokenfield\tokenfield-typeahead.css" />
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
+    <Content Include="CSS\bootstrap-tokenfield.css" />
+    <Content Include="CSS\bootstrap-tokenfield.min.css" />
+    <Content Include="CSS\tokenfield-typeahead.css" />
+    <Content Include="CSS\tokenfield-typeahead.min.css" />
     <Content Include="favicon.ico" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
     <Content Include="Content\Site.css" />
+    <Content Include="Scripts\bootstrap-tokenfield.css" />
     <Content Include="Scripts\bootstrap-tokenfield.js" />
+    <Content Include="Scripts\bootstrap-tokenfield.min.js" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
     <Content Include="Content\bootstrap-tokenfield\tokenfield-typeahead.less" />
@@ -191,6 +197,7 @@
     <Content Include="Views\Employees\Details.cshtml" />
     <Content Include="Views\Employees\Edit.cshtml" />
     <Content Include="Views\Employees\Index.cshtml" />
+    <Content Include="Views\Home\Tokenfield.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

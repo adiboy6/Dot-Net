@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Text;
 using System.Web;
 using System.Web.Mvc;
 
@@ -8,11 +9,13 @@ namespace MVC_Form.CustomHTMLHelper
 {
     public static class TokenfieldHelper
     {
-        public static IHtmlString Tokenfield(this HtmlHelper htmlHelper, string setTokens)
+        public static MvcHtmlString Tokenfield(this HtmlHelper htmlHelper, string setTokens)
         {
-            TagBuilder tagBuilder = new TagBuilder("tokenfield");
-            tagBuilder.Attributes.Add("setTokens", VirtualPathUtility.ToAbsolute(setTokens));
-            return new MvcHtmlString(tagBuilder.ToString(TagRenderMode.SelfClosing));
+            StringBuilder script = new StringBuilder();
+            script.AppendLine(@"<script>");
+            script.AppendLine("$(\"#" + setTokens + "\").tokenfield();");
+            script.Append(@"</script>");
+            return new MvcHtmlString(script.ToString());
         }
     }
 }

@@ -1,4 +1,7 @@
-﻿@model IEnumerable<MVC_Form.Models.Employee>
+﻿@using MVC_Form.CustomHTMLHelper;
+
+
+@model IEnumerable<MVC_Form.Models.Employee>
 
 @{
     Layout = null;
@@ -8,6 +11,12 @@
 
 <html>
 <head>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" href="~/CSS/bootstrap-tokenfield.css" />
+    <link rel="stylesheet" type="text/css" href="~/CSS/tokenfield-typeahead.css" />
+    <script src="~/Scripts/bootstrap-tokenfield.js"></script>
     <meta name="viewport" content="width=device-width" />
     <title>Index</title>
 </head>
@@ -25,23 +34,26 @@
             </th>
             <th></th>
         </tr>
-    
-    @foreach (var item in Model) {
-        <tr>
-            <td>
-                @Html.DisplayFor(modelItem => item.Employee_Name)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Employee_Password)
-            </td>
-            <td>
-                @Html.ActionLink("Edit", "Edit", new { id=item.Employee_ID }) |
-                @Html.ActionLink("Details", "Details", new { id=item.Employee_ID }) |
-                @Html.ActionLink("Delete", "Delete", new { id=item.Employee_ID })
-            </td>
-        </tr>
-    }
-    
+
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Employee_Name)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Employee_Password)
+                </td>
+                <td>
+                    @Html.ActionLink("Edit", "Edit", new { id = item.Employee_ID }) |
+                    @Html.ActionLink("Details", "Details", new { id = item.Employee_ID }) |
+                    @Html.ActionLink("Delete", "Delete", new { id = item.Employee_ID })
+                </td>
+            </tr>
+        }
+
+        @Html.TextBox("sample", "sample", new { id = "sample" })
+        @Html.Tokenfield("sample");
     </table>
 </body>
 </html>
