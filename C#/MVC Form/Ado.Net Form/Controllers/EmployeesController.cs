@@ -1,20 +1,18 @@
-﻿using System.Data.Entity;
+﻿using System;
+using System.Collections.Generic;
+using System.Data;
+using System.Data.Entity;
 using System.Linq;
 using System.Net;
+using System.Web;
 using System.Web.Mvc;
-using MVC_Form.Data;
-using MVC_Form.Models;
+using Ado.Net_Form.Models;
 
-namespace MVC_Form.Controllers
+namespace Ado.Net_Form.Controllers
 {
     public class EmployeesController : Controller
     {
-        private MVC_FormContext db = new MVC_FormContext();
-
-        public ActionResult Tokenizer()
-        {
-            return View();
-        }
+        private OrganizationEntities db = new OrganizationEntities();
 
         // GET: Employees
         public ActionResult Index()
@@ -48,7 +46,7 @@ namespace MVC_Form.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "Employee_ID,Employee_Name,Employee_Password")] Employee employee)
+        public ActionResult Create([Bind(Include = "Emplyee_ID,Name,Title")] Employee employee)
         {
             if (ModelState.IsValid)
             {
@@ -80,7 +78,7 @@ namespace MVC_Form.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "Employee_ID,Employee_Name,Employee_Password")] Employee employee)
+        public ActionResult Edit([Bind(Include = "Emplyee_ID,Name,Title")] Employee employee)
         {
             if (ModelState.IsValid)
             {
