@@ -1,6 +1,10 @@
-﻿using System.Data.Entity;
+﻿using System;
+using System.Collections.Generic;
+using System.Data;
+using System.Data.Entity;
 using System.Linq;
 using System.Net;
+using System.Web;
 using System.Web.Mvc;
 using MVC_Form.Data;
 using MVC_Form.Models;
@@ -10,11 +14,6 @@ namespace MVC_Form.Controllers
     public class EmployeesController : Controller
     {
         private MVC_FormContext db = new MVC_FormContext();
-
-        public ActionResult Tokenizer()
-        {
-            return View();
-        }
 
         // GET: Employees
         public ActionResult Index()
